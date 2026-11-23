@@ -22,6 +22,11 @@ const CATALOGS = [
   { label: "Catálogo de producto convertido", href: "/catalogos/catalogo-producto-convertido.pdf" },
 ];
 
+// Google no resolvía "Naschel, San Luis, Argentina" y el mapa mostraba el
+// mundo entero. Con el nombre de la ficha de Google de la planta el pin cae
+// justo en la planta, y «Abrir en Maps» abre esa ficha.
+const MAP_QUERY = "PAPELERA Cota SA, Naschel, San Luis";
+
 // Instagram al final (pedido del cliente: "ponelo a la derecha") — el
 // resto queda WhatsApp/LinkedIn/Facebook/Mail antes.
 const CHANNELS = [
@@ -128,7 +133,7 @@ export default function Contact() {
             <div className="h-72 w-full overflow-hidden border border-line-on-light grayscale transition-[filter] duration-500 hover:grayscale-0 md:h-full md:min-h-[22rem]">
               <iframe
                 title={`Ubicación de la planta de COTA en ${cota.plant.location}`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(`${cota.plant.location}, ${cota.country}`)}&output=embed`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`}
                 className="h-full w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
